@@ -50,6 +50,6 @@ Source.probe("gcd3", 3, :count)
 
 def run(a, b)
   [:gcd1, :gcd2, :gcd3].each do |fn|
-    puts "#{fn} runs for #{count { self.send(fn, a, b) }} times, #{time { self.send(fn, a, b) }.to_s} s"
+    puts "#{fn} runs for #{count { self.send(fn, a, b) }} times, taking #{time { self.send(fn, a, b) }.to_s} sec"
   end
 end
