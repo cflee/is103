@@ -8,6 +8,8 @@ def gcd1(a, b)
   t = [a, b].min
 
   t.downto(1) do |t|
+    t # just evaluate the expression so that RubyLabs#count works properly
+      # as the next statement isn't counted otherwise
     return t if a % t == 0 && b % t == 0
   end
 end
@@ -42,7 +44,7 @@ end
 # :end :gcd3
 
 Source.clear
-Source.probe("gcd1", 4, :count)
+Source.probe("gcd1", 5, :count)
 Source.probe("gcd2", 3, :count)
 Source.probe("gcd3", 3, :count)
 
