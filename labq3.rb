@@ -36,9 +36,9 @@ def select_tweeters(followers)
     end
     s.subtract(combi)
 
-    p combi
-    puts "Size=" + s.size.to_s + ", current result size=" + result_quality.to_s
-    puts
+    # p combi
+    # puts "Size=" + s.size.to_s + ", current result size=" + result_quality.to_s
+    # puts
 
     if s.size > result_quality
       result = combi
