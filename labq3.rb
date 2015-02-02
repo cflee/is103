@@ -27,6 +27,7 @@ def select_tweeters(followers)
   end
   userid_descending_follower_qty = grouped_by_follower_qty.flatten.compact.reverse
 
+  # userid_descending_follower_qty[0..34].combination(5) do |combi|
   userid_descending_follower_qty[0..sqrt(userid_descending_follower_qty.length)].combination(5) do |combi|
     count += 1
 
@@ -45,7 +46,7 @@ def select_tweeters(followers)
       result_quality = s.size
     end
 
-    if (Time.now - start_time) > 5.9
+    if (Time.now - start_time) > 0.35
       break
     end
   end
