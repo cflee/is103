@@ -27,7 +27,7 @@ def select_tweeters(followers)
   end
   userid_descending_follower_qty = grouped_by_follower_qty.flatten.compact.reverse
 
-  userid_descending_follower_qty[0..userid_descending_follower_qty.length / 2].combination(5) do |combi|
+  userid_descending_follower_qty[0..sqrt(userid_descending_follower_qty.length)].combination(5) do |combi|
     count += 1
 
     s = Set.new
