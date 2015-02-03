@@ -13,22 +13,22 @@ def select_tweeters(followers)
 
   result_quality = 0
   # do grouping
-  grouped_by_follower_qty = [];
+  grouped_users = [];
   followers.each_with_index do |follower_list, userid|
     follower_qty = follower_list.length;
 
-    list = grouped_by_follower_qty[follower_qty];
+    list = grouped_users[follower_qty];
     if list.nil?
       list = []
-      grouped_by_follower_qty[follower_qty] = list
+      grouped_users[follower_qty] = list
     end
 
     list << userid
   end
-  userid_descending_follower_qty = grouped_by_follower_qty.flatten.compact.reverse
+  top_users = grouped_users.flatten.compact.reverse
 
-  # userid_descending_follower_qty[0..34].combination(5) do |combi|
-  userid_descending_follower_qty[0..sqrt(userid_descending_follower_qty.length)].combination(5) do |combi|
+  top_n = sqrt(top_users.length)
+  top_users[0..top_n].combination(5) do |combi|
     count += 1
 
     s = Set.new
