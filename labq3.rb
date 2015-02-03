@@ -28,6 +28,10 @@ def select_tweeters(followers)
   top_users = grouped_users.flatten.compact.reverse
 
   top_n = sqrt(top_users.length)
+  top_n = top_users.length / 5 if top_n < 7   # 20%
+  top_n = top_users.length / 2 if top_n < 7   # 50%
+  top_n = top_users.length if top_n < 7       # 100%
+  # top_n = 34
   top_users[0..top_n].combination(5) do |combi|
     count += 1
 
