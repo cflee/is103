@@ -35,26 +35,44 @@ def select_tweeters(followers)
   top_users[0..top_n].combination(5) do |combi|
     count += 1
 
-    s = Set.new
+=begin
+# set style
+s = Set.new
+combi.each do { |num| s.merge(followers[num]) }
+s.subtract(combi)
+=end
+
+    # array style
+    # obtain a list of ALL followers of the chosen users
+    follower_list = []
     combi.each do |num|
-      s.merge(followers[num])
+      # use concat to avoid creating new arrays
+      # or having to flatten the array later
+      follower_list.concat(followers[num])
     end
-    s.subtract(combi)
+
+    # remove dupes
+    follower_list.uniq!
+
+    # remove the candidate users
+    combi.each do |num|
+      follower_list.delete(num)
+    end
 
     # p combi
-    # puts "Size=" + s.size.to_s + ", current result size=" + result_quality.to_s
+    # puts "Size=" + follower_list.size.to_s + ", current result size=" + result_quality.to_s
     # puts
 
-    if s.size > result_quality
+    if follower_list.size > result_quality
       result = combi
-      result_quality = s.size
+      result_quality = follower_list.size
     end
 
     if (Time.now - start_time) > 0.35
       break
     end
   end
-
+  # puts "Count = " + count.to_s
 
 =begin
   # naive brute force until 1.0 sec == 232 quality
