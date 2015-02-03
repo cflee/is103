@@ -68,7 +68,7 @@ s.subtract(combi)
       result_quality = follower_list.size
     end
 
-    if (Time.now - start_time) > 0.35
+    if (Time.now - start_time) > 0.25
       break
     end
   end
