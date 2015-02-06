@@ -38,19 +38,16 @@ def select_tweeters(followers)
     # array style
     # obtain a list of ALL followers of the chosen users
     follower_list = []
-    combi.each do |num|
-      # use concat to avoid creating new arrays
-      # or having to flatten the array later
-      follower_list.concat(followers[num])
-    end
+
+    # use concat to avoid creating new arrays
+    # or having to flatten the array later
+    combi.each { |num| follower_list.concat(followers[num]) }
 
     # remove dupes
     follower_list.uniq!
 
     # remove the candidate users
-    combi.each do |num|
-      follower_list.delete(num)
-    end
+    combi.each { |num| follower_list.delete(num) }
 
     # p combi
     # puts "Size=" + follower_list.size.to_s + ", current result size=" + result_quality.to_s
