@@ -25,6 +25,7 @@ def select_tweeters(followers)
   end
   top_users = grouped_users.flatten.compact.reverse
 
+=begin
   # determine top-n users to inspect
   top_n = sqrt(top_users.length)
   top_n = top_users.length / 5 if top_n < 7   # 20%
@@ -65,6 +66,40 @@ def select_tweeters(followers)
   end
 
   # puts "Count = " + count.to_s
+=end
+
+  # remove followers from consideration. quality = 307, 321.
+  0.upto(490) do |offset|
+    # don't affect the original since we will delete from this
+    candidates = top_users.clone
+
+    # temp storage of the 5 users
+    loop_result = []
+
+    # obtain the top 5 users starting from offset
+    0.upto(4) do |round|
+      userid = candidates[offset + round]
+      loop_result << userid
+
+      # remove this user's followers from candidate list
+      followers[userid].each do |follower_id|
+        candidates.delete(follower_id)
+      end
+    end
+
+    # calculate quality
+    follower_list = []
+    loop_result.each { |userid| follower_list.concat(followers[userid]) }
+    follower_list.uniq!
+    loop_result.each { |userid| follower_list.delete(userid) }
+
+    # update if necessary
+    if follower_list.size > result_quality
+      result = loop_result
+      result_quality = follower_list.size
+    end
+  end
+
 
   return result
 end
