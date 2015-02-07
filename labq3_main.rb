@@ -9,9 +9,13 @@ load "labq3_utility.rb"
 include Math
 
 # get name of CSV file from keyboard
-puts
-print "Enter name of CSV file in data folder to read from (e.g. t1.csv) :"
-file_name = gets.chomp
+if ARGV.length > 0
+  file_name = ARGV[0]
+else
+  puts
+  print "Enter name of CSV file in data folder to read from (e.g. t1.csv) :"
+  file_name = gets.chomp
+end
 
 # read from file_name and store in input
 input = []
