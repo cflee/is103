@@ -25,6 +25,7 @@ def select_tweeters(followers)
   end
   top_users = grouped_users.flatten.compact.reverse
 
+=begin
   # remove followers from consideration. quality = 307, 321.
   0.upto(490) do |offset|
     # don't affect the original since we will delete from this
@@ -56,8 +57,8 @@ def select_tweeters(followers)
       result_quality = follower_list.size
     end
   end
+=end
 
-=begin
   # determine top-n users to inspect
   top_n = sqrt(top_users.length)
   top_n = top_users.length / 5 if top_n < 7   # 20%
@@ -98,7 +99,7 @@ def select_tweeters(followers)
   end
 
   # puts "Count = " + count.to_s
-=end
+
 
   return result
 end
