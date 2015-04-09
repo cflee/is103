@@ -52,3 +52,12 @@ def plan_tour(adj_matrix, node_value, node_time, origin, dest, time_limit)
 
   return nil
 end
+
+=begin
+Note that this implementation doesn't handle origin == dest case properly!
+
+Change the following lines to fix it:
+27: stack.push([[0, origin, 0, []]])
+31: return node_path.unshift(origin) if node_path.size > 0 && node == dest
+
+=end

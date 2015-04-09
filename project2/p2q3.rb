@@ -1,3 +1,4 @@
+# p2q3.rb as submitted
 def plan_tour(adj_matrix, node_value, node_time, origin, dest, time_limit)
   # number of nodes in the graph
   n = adj_matrix.size
@@ -74,3 +75,13 @@ def plan_tour(adj_matrix, node_value, node_time, origin, dest, time_limit)
 
   return result
 end
+
+=begin
+Note that this implementation doesn't handle origin == dest case properly!
+
+Change the following lines to fix it:
+42: stack = [[0, origin, 0, []]]
+47: if node_path.size > 0 && node == dest
+75: return result.unshift(origin)
+
+=end
